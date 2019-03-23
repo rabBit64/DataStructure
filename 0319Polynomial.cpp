@@ -25,16 +25,16 @@ public:
 void Polynomial::NewTerm(const float theCoeff, const int theExp) {
 	if(terms==capacity)
 	{
-		capacity += 4;
-		Term *start = new Term[capacity]; //new array!
-		//copy(termArray, termArray+terms. start);
-		for(int i=0; i<terms; i++) {
-			start[i] = termArray[i];
-			delete[] termArray; //dellocate old memory!
-			termArray = start;
-		}
-		termArray[terms].coef=theCoeff;
-		termArray[terms++].exp=theExp; //why?
+	capacity += 4;
+	Term *start = new Term[capacity]; //new array!
+	//copy(termArray, termArray+terms. start);
+	for(int i=0; i<terms; i++) {
+		start[i] = termArray[i];
+		delete[] termArray; //dellocate old memory!
+		termArray = start;
+	}
+	termArray[terms].coef=theCoeff;
+	termArray[terms++].exp=theExp; //why?
 	}
 }
 
