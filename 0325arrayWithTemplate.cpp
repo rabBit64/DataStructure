@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-=======
-/* vector 직접 구현해봄 template 함수로
-에러 */
->>>>>>> 0e116ae906a640e63d1b2367157521dcb035781d
+/* vector 직접 구현해봄 template 함수로 */
 #include <iostream>
 #include <string>
 using namespace std;
@@ -105,11 +101,8 @@ T ArrayList<T>::deleteItem(int k) {
 		return T();*/
 	}
 	if (isEmpty()) cout << "배열이 비었음" << endl;
-<<<<<<< HEAD
 	T item = arrayLink[k];
-=======
 	int item = arrayLink[k];
->>>>>>> 0e116ae906a640e63d1b2367157521dcb035781d
 	for (int i = k; i < size; i++) arrayLink[i] = arrayLink[i + 1];
 	size--;
 	if (size > 0 && size == capacity/4) {
@@ -118,10 +111,7 @@ T ArrayList<T>::deleteItem(int k) {
 	}
 	return item;
 }
-<<<<<<< HEAD
-=======
 template <class T>
->>>>>>> 0e116ae906a640e63d1b2367157521dcb035781d
 int main() {
 	try {
 		ArrayList<string> arrColor;
@@ -131,11 +121,8 @@ int main() {
 		arrColor.print();
 		arrColor.insertItem("white", 2);
 		arrColor.print();
-<<<<<<< HEAD
 		cout << "크기: " << arrColor.getSize() << "용량:" << arrColor.getCapacity() << endl;
-=======
 		cout << "크기: " << arrColor.getSize() << "용량:" << arrColor.capacity() << endl;
->>>>>>> 0e116ae906a640e63d1b2367157521dcb035781d
 
 		cout << "검색한 값:" << arrColor.peek(6) << endl;
 		arrColor.deleteItem(5); arrColor.print();
@@ -143,22 +130,16 @@ int main() {
 		arrColor.deleteItem(1);	arrColor.print();
 		arrColor.deleteItem(0);	arrColor.print();
 		arrColor.deleteItem(0);	arrColor.print();
-<<<<<<< HEAD
 		cout << "크기: " << arrColor.getSize() << "용량:" << arrColor.getCapacity() << endl;
-=======
 		cout << "크기: " << arrColor.getSize() << "용량:" << arrColor.capacity() << endl;
->>>>>>> 0e116ae906a640e63d1b2367157521dcb035781d
 
 		ArrayList<Complex> arrCpx;
 		arrCpx.insertLast(Complex(2, 3));	arrCpx.insertItem(Complex(2, 3), 1);
 		arrCpx.insertItem(Complex(2, 3),2);	arrCpx.insertLast(Complex(2, 3));
 		arrCpx.insertLast(Complex(2, 3));	arrCpx.insertLast(Complex(2, 3));
 		arrCpx.insertItem(100, 3);
-<<<<<<< HEAD
 		cout << "크기: " << arrCpx.getSize() << "용량:" << arrCpx.getCapacity() << endl;
-=======
 		cout << "크기: " << arrCpx.getSize() << "용량:" << arrCpx.capacity() << endl;
->>>>>>> 0e116ae906a640e63d1b2367157521dcb035781d
 		arrCpx.print();
 
 		arrCpx.deleteItem(5); arrCpx.print();
@@ -166,11 +147,8 @@ int main() {
 		arrCpx.deleteItem(1); arrCpx.print();
 		arrCpx.deleteItem(0); arrCpx.print();
 		arrCpx.deleteItem(0); arrCpx.print();
-<<<<<<< HEAD
 		cout << "크기: " << arrCpx.getSize() << "용량:" << arrCpx.getCapacity() << endl;
-=======
 		cout << "크기: " << arrCpx.getSize() << "용량:" << arrCpx.capacity() << endl;
->>>>>>> 0e116ae906a640e63d1b2367157521dcb035781d
 	}
 	catch (string str) { cout << str << endl; }
 }
