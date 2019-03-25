@@ -26,16 +26,13 @@ int ArrayList::peek(int k) {
 	temp = arrayLink[k];
 	return temp;
 }
-
 void ArrayList::reSize(int newSize) {
-	//크기가 newSize의동적배열 만들고 데이터 이동하는 프로그램 작성
 	int *temp = new int[newSize];
 	for(int i=0; i<size; i++) temp[i]=arrayLink[i];
-	arrayLink = temp; //이제는 이 temp가 새로운 arrayLink가 되었다는 식으로 이해하면 될듯..
+	arrayLink = temp; 
 }
 void ArrayList::insertLast(int newItem) {
 	if(size==capacity) {
-	//크기를 2배로 들린 변수를 resize()로 송부하는 프로그램 작성
 		capacity *= 2;	
 		reSize(capacity);
 	}
