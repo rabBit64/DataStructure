@@ -102,7 +102,6 @@ T ArrayList<T>::deleteItem(int k) {
 	}
 	if (isEmpty()) cout << "배열이 비었음" << endl;
 	T item = arrayLink[k];
-	int item = arrayLink[k];
 	for (int i = k; i < size; i++) arrayLink[i] = arrayLink[i + 1];
 	size--;
 	if (size > 0 && size == capacity/4) {
