@@ -1,4 +1,4 @@
-//에러 
+/*멤버변수 초기화하는거 이해하기. 사이즈 줄이는것도!*/
 
 #include <iostream>
 #include <string>
@@ -30,8 +30,9 @@ Queue<T>::Queue(int queueCapacity) : capacity(queueCapacity) {
 //size 멤버변수 만들어서
 template <class T>
 void Queue<T>::Pop() {
-
-
+	if(IsEmpty()) throw "Queue is empty. Cannot delete.";
+	front = (front+1)%capacity;
+	queue[front].~T();
 }
 template <class T>
 inline bool Queue<T>::IsEmpty() { return front == rear; }
@@ -45,6 +46,7 @@ inline T& Queue<T>::Front() {
 template <class T>
 inline T& Queue<T>::Rear() {
 	if(IsEmpty()) throw "Queue is empty. No front element";
+	return queue[rear];
 }
 template <class T>
 void Queue<T>::Push(const T& x) {
@@ -61,7 +63,7 @@ void Queue<T>::Push(const T& x) {
 		rear = capacity - 2;
 		capacity *= 2;
 		delete[] queue;
-		newQueue = queue;
+		queue = newQueue;
 	}
 	rear = (rear + 1) % capacity; queue[rear] = x;
 }
@@ -98,7 +100,7 @@ int main() {
 		Q_queue.Push(43); Q_queue.Push(49);
 		Q_queue.Push(490); Q_queue.Print();
 		
-		/*Q_queue.Push(55); Q_queue.Push(45);
+		Q_queue.Push(55); Q_queue.Push(45);
 		Q_queue.Pop(); Q_queue.Pop();
 		Q_queue.Pop(); Q_queue.Pop();
 		Q_queue.Push(55); Q_queue.Push(45);
@@ -107,7 +109,7 @@ int main() {
 		Queue<string> aqueue(10);
 		aqueue.Push("sky"); aqueue.Push("sky1");
 		aqueue.Push("sky2");
-		aqueue.Print();*/
+		aqueue.Print();
 	}
 	catch (char* str) { cout << str << endl; }
 }
