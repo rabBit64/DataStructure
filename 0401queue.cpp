@@ -1,5 +1,3 @@
-/*멤버변수 초기화하는거 이해하기. 사이즈 줄이는것도!*/
-
 #include <iostream>
 #include <string>
 using namespace std;
@@ -7,8 +5,10 @@ using namespace std;
 template <class T>
 class Queue {
 private:
-	T *queue;
-	int front, rear, capacity;
+	T *queue; //queue 원소를 위한 배열
+	int front, //첫번째 원소로부터 반시계방향으로 한 위치 뒤
+	rear, //마지막 원소의 위치
+	capacity; //큐의 배열 
 public:
 	Queue(int queueCapacity = 5);
 	bool IsEmpty();
@@ -26,7 +26,6 @@ Queue<T>::Queue(int queueCapacity) : capacity(queueCapacity) {
 	queue = new T[capacity];
 	front = rear = 0;
 }
-
 //size 멤버변수 만들어서
 template <class T>
 void Queue<T>::Pop() {
@@ -59,11 +58,11 @@ void Queue<T>::Push(const T& x) {
 			j++;
 		}
 		//멤버변수 변화시켜주기
-		front = 2 * capacity - 1;
-		rear = capacity - 2;
-		capacity *= 2;
-		delete[] queue;
-		queue = newQueue;
+		front = 2 * capacity - 1; //front 위치 조정
+		rear = capacity - 2; //rear 위치 조정
+		capacity *= 2; //capacity 크기 2배 조정
+		delete[] queue; //기존 queue 삭제
+		queue = newQueue; //2배 변경된 queue를 queue에 연결
 	}
 	rear = (rear + 1) % capacity; queue[rear] = x;
 }
@@ -71,7 +70,7 @@ void Queue<T>::Push(const T& x) {
 template <class T>
 void Queue<T>::Print() {
 	cout << "capacity=" << capacity << " " << "front=" << front <<" "<<"rear=" << rear << " " << endl;
-	for (int i = (front + 1) % capacity; i != (rear + 1) % capacity; i = (i + 1) % capacity)
+	for (int i = (front + 1) % capacity; i != (rear + 1) % capacity; i = (i + 1) % capacity) //중요!
 		cout << " " << "queue[" << i << "]=" << queue[i] << endl;
 	cout << endl;
 }
