@@ -94,7 +94,7 @@ void Chain::Concat(Chain *b) {
 		last = b->last;
 	}
 	else {
-		if(b->first=NULL) return;
+		if(b->first==NULL) return;
 		while(current != NULL) {
 			double dataItem = current ->data;
 			Insert(dataItem);
