@@ -85,58 +85,90 @@ void Chain::Reverse() {
 	last = first;
 	first = prev;
 }
-/*
-template <class T>
-void Chain<T>::Concat(Chain<T>& b) {
-	//chain연결 프로그램 작성
-	if (first) {
-		if (!= b->first) return;
-		last->link = b->first; last = b->last;
+void Chain::Concat(Chain *b) {
+	ChainNode *current = b->first;
+	if (first==NULL) {
+		if (b->first==NULL) return;
+		first = b->first;
+		last = b->last;
 	}
 	else {
-	first = b->first; last = b->last;
+		if(b->first=NULL) return;
+		while(current != NULL) {
+		double dataItem = current ->data;
+		Insert(dataItem);
+		current = current->link;
+		}
 	}
-	b->first = b->last = 0;
+	b->first = b->last = NULL;
 }
-*/
 
 int main() {
 	Chain *chain = new Chain();
 	Chain *chainA = new Chain();
 	double insertData;
-	for (int i = 0; i < 10; i++) {//data값 집어넣는것
-		insertData = (double)i + 50.5;
-		ChainNode *inputchain = new ChainNode(insertData);
-		chain->Insert(inputchain);//?
+	for(int i=0; i<10; i++){
+		insertData = (double)i+50.5;
+		chain->Insert(insertData);
 	}
-
 	chain->Print();
-	cout << "Node의 크기:" << chain->Length() << endl;
-
+	count<<"Node length:"<<chain->Length()<<endl;
+	
 	double delNum;
-	cout << "삭제하고자 하는 값을 입력하세요";
-	cin >> delNum;
+	cout<<"삭제하고자 하는 값 입력하세요:";
+	cin>>delNum;
 	chain->Delete(delNum);
 	chain->Print();
-	cout << "Node의 크기:" << chain->Length() << endl;
+	cout<<"Node length:"<<chain->Length()<<endl;
 	
 	chain->Reverse();
 	chain->Print();
-	cout << "Node의 크기:" << chain->Length() << endl;
+	cout<<"Node length:"<<chain->Length()<<endl;
+	
+	chainA->Insert(54.3); chainA->Insert(54.5); chainA->Insert(53.2);
+	chainA->Print();
+	cout<<"Node length:"<<chain->Length()<<endl;
+	
+	chain->Concat(chainA);
+	chain->Print();
+	cout<<"Node length"<<chain->Length()<<endl;
 	return 0;
 }
-
-/*동적 Chain 객체 생성
+/*
+int main() {
+	Chain *chain = new Chain();
+	int chainLeng;
+	double insertData;
+	for(int i=0; i<10; i++) {
+		insertData = (double)i+50.5;
+		chain->Insert(insertData);
+	}
+	chain->Print();
+	chainLeng=chain->Length();
+	cout<<"Node의 크기:"<<chainLeng<<endl;
+	double delNum;
+	cout<<"삭제하고자 하는 값을 입력하세요.";
+	cin>>delNum;
+	chain->Delete(delNum);
+	chain->Print();
+	
+	chainLeng=chain->Length();
+	cout<<"Node의 크기:"<<chainLeng<<endl;
+	return 0;
+}
+*/
+/*
 int main() {
 	Chain *chain = new Chain();
 	double insertData;
-	insertData = 45.4;
-	ChainNode *inputchain = new ChainNode(insertData);
-	chain->Insert(inputchain);
+	for(int i=0; i<10; i++) {
+		insertData = (double)i + 50.5;
+		ChainNode *inputchain = new ChainNode(insertData);
+		chain->Insert(inputchain);
+	}
+	chain->Print();
+	return 0;
 }
-*/
-
-/*
 int main() {
 	Chain chain; double insertData;
 	insertData = 45.4;
