@@ -63,7 +63,7 @@ void Chain::Delete(double delData) {
 	}
 	else {
 		beforeNode = current;
-		for (current = first->link; current != NULL; beforeNode = current, current = current->link) {
+		for (current = first->link; current != NULL; beforeNode = current; current = current->link) {
 			if (current->data == delData) {
 				if (current->link == NULL) last = beforeNode;
 				beforeNode->link = current->link;
