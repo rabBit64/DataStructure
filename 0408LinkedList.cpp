@@ -22,6 +22,7 @@ public:
 	void Print();
 	int Length();
 	void Reverse();
+	void Concat(Chain *b);
 };
 
 void Chain::Insert(ChainNode *insertNode) {
@@ -95,9 +96,9 @@ void Chain::Concat(Chain *b) {
 	else {
 		if(b->first=NULL) return;
 		while(current != NULL) {
-		double dataItem = current ->data;
-		Insert(dataItem);
-		current = current->link;
+			double dataItem = current ->data;
+			Insert(dataItem);
+			current = current->link;
 		}
 	}
 	b->first = b->last = NULL;
@@ -112,7 +113,7 @@ int main() {
 		chain->Insert(insertData);
 	}
 	chain->Print();
-	count<<"Node length:"<<chain->Length()<<endl;
+	cout<<"Node length:"<<chain->Length()<<endl;
 	
 	double delNum;
 	cout<<"삭제하고자 하는 값 입력하세요:";
