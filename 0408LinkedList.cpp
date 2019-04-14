@@ -17,7 +17,7 @@ private:
 	ChainNode * last;
 public:
 	Chain(ChainNode* fst = NULL, ChainNode * lst = NULL) :first(fst), last(lst) {};
-	void Insert(ChainNode *x);
+	void Insert(ChainNode *insertNode);
 	void Delete(double deNum);
 	void Print();
 	int Length();
