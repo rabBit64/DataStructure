@@ -23,7 +23,7 @@ public:
 	void print();
 };
 int ArrayList::peek(int k) {
-	if (k = size) {
+	if (k == size) {
 		cout << "배열의 크기에 벗어난 인덱스 입니다." << endl;
 	}
 	if (isEmpty()) cout << "배열이 비어있음" << endl;
