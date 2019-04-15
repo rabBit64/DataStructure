@@ -12,7 +12,7 @@ public:
 
 class Polynomial {
 private:
-	Term *termArray;// why array?
+	Term *termArray;
 	int capacity;
 	int terms;
 public:
