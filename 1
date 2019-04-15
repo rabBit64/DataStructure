@@ -1,0 +1,56 @@
+#include <iostream>
+using namespace std;
+template <class T> class chain;
+template <class T>
+class ChainNode {
+	friend class Chain<T>;
+private:
+	T data;	ChainNode<T> *link;
+public:
+	ChainNode(const T& e, ChainNode *next=NULL):data(e), link(next) {};
+};
+template <class T>
+class Chain {
+private:
+	ChainNode<T> *first;	ChainNode<T> *last;
+public:
+	Chain(ChainNode<T> *fst=NULL, ChainNode<T> *lst=NULL) : first(fst), last(lst) {};
+	void Insert(const T & istData);
+	void Delete(T delData);
+	void Print();
+	int Length();
+	void Reverse();
+};
+template <class T>
+void Chain<T>::Insert(const T & istData) {
+	if(first == NULL) {
+		first = istData;
+		last = first;
+	}
+	else {
+		last->link=istData;
+		last=last->link;
+	}
+}
+template <class T>
+void Chain<T>::Delete(T delData) {
+	ChainNode *current = first;
+	ChainNode *beforeNode = NULL;
+	if (current == NULL || current->data == delData) {
+		if (current == NULL) { cout << "빈 리스트입니다." << endl; return; }
+		first = current->link;
+		delete current; return;
+	}
+	else {
+		beforeNode = current;
+		for (current = first->link; current != NULL; beforeNode = current, current = current->link) {
+			if (current->data == delData) {
+				if (current->link == NULL) last = beforeNode;
+				beforeNode->link = current->link;
+				delete current; return;
+			}
+		}
+		cout << "찾고자 하는 값이 리스트에 없습니다." << endl;
+	}
+}
+		
