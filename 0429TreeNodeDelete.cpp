@@ -127,10 +127,24 @@ void BST<K, E>::Delete(const K delKey) {
    current->rightChild = nextNode->rightChild; delete nextNode;
   }
   else
-   //오른쪽 서브트맂 우 가장 작은노드 검색
+   //오른쪽 서브트리에서 가장 작은노드 검색
    TreeNode<K, E>* leftCurrent; TreeNode<K, E> *leftCurrentParent;
+   leftCurrentParent = current->rightChild;
+   leftCurrent = (current->rightChild)->leftChild;
+   while(leftCurrent->leftChild != NULL){ //왼쪽노드 중 가장 왼쪽노드
+    leftCurrentParent = leftCurrent; 
+     leftCurrent = leftCurrent->leftChild;
+   } //가장 왼쪽에 있는 노드값을 삭제노드로 이동
+   current->key = leftCurrent->key; current->data = leftCurrent->data;
+   if(leftCurrent->rightChild == NULL) { //오른쪽 자식이 없는 경우 삭제
+    leftCurrentParent->leftChild = NULL; delte leftCurent;
  }
+ else { //가장 왼쪽노드가 오른쪽 노드가 있는 경우 증조부에 노드 연결
+  leftCurrentParent->leftChild = leftCurrent->rightChild;
+  delete leftCurrent;
 }
+  
+  
 template <class K, class E>
 void BST<K, E>::Preorder() {
  Preorder(root);
