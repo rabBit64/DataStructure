@@ -82,15 +82,15 @@ void BST<K, E>::Delete(const K delKey) {
  	if (current->leftChild == NULL && current->rightChild == NULL) {
  		if (parent->leftChild == current)
    			parent->leftChild = NULL;
-  	else
-   		parent->rightChild = NULL;
+  		else
+   			parent->rightChild = NULL;
 
-  	delete current;
+  		delete current;
 
-  	cout << endl;
-  	cout << "Key value " << delKey << "Node has been moved from the Tree." << endl;
-  	cout << endl;
-  	return;
+  		cout << endl;
+  		cout << "Key value " << delKey << "Node has been moved from the Tree." << endl;
+  		cout << endl;
+  		return;
  	}
 	 //Case2 : 자식노드가 1개
  	if ((current->leftChild == NULL && current->rightChild != NULL) || 
