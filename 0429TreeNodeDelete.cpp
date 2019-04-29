@@ -180,3 +180,21 @@ int main() {
  bst->Delete(15);
  bst->Preorder();
 } 
+
+/*
+===전위 표기===
+King
+Queen
+List
+Good
+Value
+Global
+
+Key값:15, Data값:Queen을 삭제하였습니다.
+
+King
+List
+Good
+Value
+Global
+*/
