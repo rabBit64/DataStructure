@@ -97,16 +97,17 @@ void BST<K, E>::Delete(const K delKey) {
   		(current->leftChild != NULL && current->rightChild == NULL)) {
   		//삭제노드의 자식노드가 오른쪽에 있는 경우
   		if (current->leftChild == NULL && current->rightChild != NULL) {
-   			if (parent->leftChild == current) {
-    			//부모노드의 왼쪽에 삭제노드인 경우
+   			//부모노드의 왼쪽이 삭제노드인 경우
+			if (parent->leftChild == current) {
     			parent->leftChild = current->rightChild;
     			delete current;
-   		}
-   		else {
-    		parent->rightChild = current->rightChild;
-    		delete current;
-   		}
-  	}
+   			}
+			//부모노드의 오른쪽이 삭제노드인 경우
+   			else {
+    			parent->rightChild = current->rightChild;
+    			delete current;
+   			}
+  		}
   		//삭제노드의 자식노드가 왼쪽인 경우
   		else {
    			if (parent->leftChild == current) {
