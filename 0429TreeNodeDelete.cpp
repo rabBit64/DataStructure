@@ -58,7 +58,7 @@ void BST<K, E>::Delete(const K delKey) {
  	while (current != NULL) {
   		if (current->key == delKey) {
    			found = true; break;
- 		 }
+ 		}
   		else {
    			parent = current;
    			if (delKey > (current->key)) 
@@ -107,17 +107,18 @@ void BST<K, E>::Delete(const K delKey) {
     		delete current;
    		}
   	}
-  	//삭제노드의 자식노드가 왼쪽인 경우
-  	else {
-   		if (parent->leftChild == current) {
-    		parent->leftChild = current->leftChild;
-    		delete current;
-   		}
-   		else {
-    		parent->rightChild = current->leftChild;
-    		delete current;
-   		}
-  	}
+  		//삭제노드의 자식노드가 왼쪽인 경우
+  		else {
+   			if (parent->leftChild == current) {
+    			parent->leftChild = current->leftChild;
+    			delete current;
+   			}
+   			else {
+    			parent->rightChild = current->leftChild;
+    			delete current;
+   			}
+  		}
+	}
  	//Case3: 자식노드가 2개인 경우 오른쪽 서브트리 중 가장 작은 값을 검색
  	if (current->leftChild != NULL && current->rightChild != NULL) {
   		//삭제노드 중 자식노드가 왼쪽노드를 갖지 않는 경우
@@ -151,32 +152,30 @@ void BST<K, E>::Delete(const K delKey) {
 		} 
 	}
 }
-}
 template <class K, class E>
 void BST<K, E>::Preorder() {
- Preorder(root);
+	Preorder(root);
 }
 template <class K, class E>
 void BST<K, E>::Preorder(TreeNode<K, E> *currentNode) {
- if (currentNode) {
-  cout << currentNode->data << " "<<endl;
-  Preorder(currentNode->leftChild);
-  Preorder(currentNode->rightChild);
- }
+	if (currentNode) {
+ 		cout << currentNode->data << " "<<endl;
+  		Preorder(currentNode->leftChild);
+  		Preorder(currentNode->rightChild);
+ 	}
 }
-
 int main() {
- BST<int, string> *bst = new BST<int, string>();
- int insertArrKey[6] = { 50, 15, 80, 30, 59, 90 };
- string insertArrValue[6] = { "King","Queen", "Good", "List", "Value", "Global" };
- for (int i = 0; i < 6; i++) {
-  bst->Insert(insertArrKey[i], insertArrValue[i]);
- }
- cout << "===자료 검색===" << endl;
- //bst->SearchBst(30);
+ 	BST<int, string> *bst = new BST<int, string>();
+ 	int insertArrKey[6] = { 50, 15, 80, 30, 59, 90 };
+ 	string insertArrValue[6] = { "King","Queen", "Good", "List", "Value", "Global" };
+ 	for (int i = 0; i < 6; i++) {
+  		bst->Insert(insertArrKey[i], insertArrValue[i]);
+ 	}
+ 	cout << "===자료 검색===" << endl;
+ 	//bst->SearchBst(30);
 
- cout << "===전위 표기===" << endl;
- bst->Preorder();
- bst->Delete(15);
- bst->Preorder();
+ 	cout << "===전위 표기===" << endl;
+ 	bst->Preorder();
+ 	bst->Delete(15);
+ 	bst->Preorder();
 } 
