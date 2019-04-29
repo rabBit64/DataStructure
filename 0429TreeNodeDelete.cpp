@@ -99,24 +99,24 @@ void BST<K, E>::Delete(const K delKey) {
   		if (current->leftChild == NULL && current->rightChild != NULL) {
    			//부모노드의 왼쪽이 삭제노드인 경우
 			if (parent->leftChild == current) {
-    			parent->leftChild = current->rightChild;
-    			delete current;
+    				parent->leftChild = current->rightChild;
+    				delete current;
    			}
 			//부모노드의 오른쪽이 삭제노드인 경우
    			else {
-    			parent->rightChild = current->rightChild;
-    			delete current;
+    				parent->rightChild = current->rightChild;
+    				delete current;
    			}
   		}
   		//삭제노드의 자식노드가 왼쪽인 경우
   		else {
    			if (parent->leftChild == current) {
-    			parent->leftChild = current->leftChild;
-    			delete current;
+    				parent->leftChild = current->leftChild;
+    				delete current;
    			}
    			else {
-    			parent->rightChild = current->leftChild;
-    			delete current;
+    				parent->rightChild = current->leftChild;
+    				delete current;
    			}
   		}
 	}
@@ -137,13 +137,13 @@ void BST<K, E>::Delete(const K delKey) {
    			leftCurrentParent = current->rightChild;
    			leftCurrent = (current->rightChild)->leftChild;
    			while(leftCurrent->leftChild != NULL){ //왼쪽노드 중 가장 왼쪽노드
-    			leftCurrentParent = leftCurrent; 
-     			leftCurrent = leftCurrent->leftChild;
+    				leftCurrentParent = leftCurrent; 
+     				leftCurrent = leftCurrent->leftChild;
    			} //가장 왼쪽에 있는 노드값을 삭제노드로 이동
    			current->key = leftCurrent->key; 
 			current->data = leftCurrent->data;
    			if(leftCurrent->rightChild == NULL) { //오른쪽 자식이 없는 경우 삭제
-    			leftCurrentParent->leftChild = NULL; 
+    				leftCurrentParent->leftChild = NULL; 
 				delete leftCurrent;
  			}
  			else { //가장 왼쪽노드가 오른쪽 노드가 있는 경우 증조부에 노드 연결
