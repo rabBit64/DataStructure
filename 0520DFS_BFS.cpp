@@ -1,4 +1,4 @@
-/* depth first 와 bread first방법으로 신장트리 그릴 수 있다 */
+/* depth first 와 breadth first spanning방법으로 신장트리 그릴 수 있다 */
 #include <iostream>
 #include <set> //chain 저장
 #include <queue> //queue의 insert()
@@ -41,11 +41,6 @@ void D_BFS::StartDFS(int v) {
 }
 
 /*과제: 순환적 DFS를 스택과 for문을 사용하여 비순환적 DFS로 재작성*/
-/*BFS; Breadth-First Search (너비 우선 탐색)
--시작정점 v를 방문
--v에 인접한 모든 정점들을 방문
--새롭게 방문한 정점들에 인접하며서 아직 방문하지 못한 정점들을 방문
-*/
 void D_BFS::DFS(const int v) { 
 	//visit all previously unvisited vertices that are reachable from vertex v
 	if (visited[v]) return;
@@ -57,6 +52,11 @@ void D_BFS::DFS(const int v) {
 		DFS(w);
 	}
 }
+/*BFS; Breadth-First Search (너비 우선 탐색)
+-시작정점 v를 방문
+-v에 인접한 모든 정점들을 방문
+-새롭게 방문한 정점들에 인접하며서 아직 방문하지 못한 정점들을 방문
+*/
 void D_BFS::BFS(int v) {
 	bool *visited = new bool[n]; //지역변수로 사용
 	fill(visited, visited + n, false); //지역변수로 사용
