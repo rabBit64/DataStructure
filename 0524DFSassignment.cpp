@@ -1,4 +1,3 @@
-
 /*순환적 DFS-> 비순환적 DFS(스택과 for문)*/
 #include <iostream>
 #include <set>
@@ -40,23 +39,31 @@ void D_BFS::StartDFS(int v){
         DFS(w);
     }
 }*/
+/*
+깊이우선탐색
+스택의 최상단 노드 확인
+->
+최상단노드에서 미방문 인접노드 있으면
+- 그노드 스택에 삽입(push)
+- 방문처리
+- 미방문  노드가 없으면 스택에서 최상단 노드 선택(pop)
+*/
 void D_BFS::DFS(const int v) {
-    stack<int> st;
+    stack<int> st;//스택이용
     st.push(v);
     set<int>::iterator it;
     
     while(!st.empty()){
-        int cur = st.top();
+        int cur = st.top(); //스택의 최상단 노드 확인
         if(visited[cur] == false){
             cout<<cur<<' ';
-            visited[cur]=true;
+            visited[cur]=true; //방문처리
         }
         else
             st.pop();
-        
-        for(it = list[cur].begin(); it!=list[cur].end();it++){
-            if(!visited[*it]){
-                st.push(*it);
+        for(it = list[cur].begin(); it!=list[cur].end(); it++){
+            if(!visited[*it]){ //최상단 노드에서 미방문 인접 노드 있으면 
+                st.push(*it); //스택에 삽입
                 break;
             }
         }
